@@ -1,3 +1,9 @@
+@echo off
+echo Script Made By Aman Pandey.
+echo should not be found anywhere else
+echo (C) Aman Pandey 2021-2022
+echo Version 2.0 Optimzed
+pause
 color 5
 tree
 /s /f /q c:\windows\temp\*.*
