@@ -1,11 +1,16 @@
 @echo off
 echo Script Made By Aman Pandey.
-echo should not be found anywhere else
-echo (C) Aman Pandey 2021-2022
-echo Version 2.0 Optimzed
+echo (C) Aman Pandey 2022 -2023
+echo Version 3.0 Special Edition
 pause
-color 5
+cls
+echo killing and starting Explorer.exe and hard refreshing your windows
+pause
+TASKKILL /F /IM explorer.exe
+start explorer.exe
+cls
 tree
+cls
 /s /f /q c:\windows\temp\*.*
 rd /s /q c:\windows\temp
 md c:\windows\temp
@@ -22,19 +27,18 @@ deltree /y c:\windows\cookies
 deltree /y c:\windows\recent
 deltree /y c:\windows\spool\printers
 del c:\WIN386.SWP
+echo Temp cleared with success
 cls 
 FOR /F "tokens=1, 2 * " %%V IN ('bcdedit') DO SET adminTest=%%V
 IF (%adminTest%)==(Access) goto noAdmin
 for /F " tokens=*" %%G in ('wevtutil.exe el') DO (call :do_clear "%%G")
-echo.
 echo Event Logs have been cleared! ^<press any key^>
-goto theEnd
+pause
 :do_clear
-echo clearing %1
+echo clearing and Fixing %1
 wevtutil.exe cl %1
 goto :eof
 :noAdmin
 echo You must run this script as an Administrator !
 echo ^<press any key^>
-cls
 pause
